@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemoTrain</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand d-flex align-items-center" href="index.html" id="home-page">
+            <img src="./images/brain.png" width="50" height="50" class="d-inline-block align-top mr-2" alt="Logo">
+            <span class="h4 mb-0">MemoTrain</span>
+        </a>
+    </nav>
+    <div class="container " >
+
+        <div id="setup-page">
+            <!-- Title -->
+            <div class="text-center mt-4 highlight">
+                <h1 >Cards</h1>
+            </div>
+            <div class="row mt-4">
+                <!-- Level Selection Column -->
+                <div class="col-md-6">
+                    <div id="level-selection">
+                        <h2>Select a Level </h2>
+                        <div class="list-group " >
+                            <a href="#" class="list-group-item list-group-item-action" data-num-cards="3" data-time-limit="60">
+                                <strong>Level 1:</strong> Memorize 3 cards in 60 seconds
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action" data-num-cards="5" data-time-limit="60">
+                                <strong>Level 2:</strong> Memorize 5 cards in 60 seconds
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action" data-num-cards="8" data-time-limit="60">
+                                <strong>Level 3:</strong> Memorize 8 cards in 60 seconds
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action" data-num-cards="12" data-time-limit="60">
+                                <strong>Level 4:</strong> Memorize 12 cards in 60 seconds
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action" data-num-cards="20" data-time-limit="120">
+                                <strong>Level 5:</strong> Memorize 20 cards in 120 seconds
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action" data-num-cards="26" data-time-limit="120">
+                                <strong>Level 6:</strong> Memorize 26 cards in 120 seconds
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action" data-num-cards="32" data-time-limit="180">
+                                <strong>Level 7:</strong> Memorize 32 cards in 180 seconds
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action" data-num-cards="40" data-time-limit="240">
+                                <strong>Level 8:</strong> Memorize 40 cards in 240 seconds
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action" data-num-cards="48" data-time-limit="300">
+                                <strong>Level 9:</strong> Memorize 48 cards in 300 seconds
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action" data-num-cards="52" data-time-limit="300">
+                                <strong>Level 10:</strong> Memorize 52 cards in 300 seconds
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Setup Column -->
+                <div class="col-md-6" >
+                        <div class="justify-content-between d-flex">
+                            <h2>Custom </h2>
+                            <button id="settings-button" class="btn btn btn-warning">
+                                <img src="images/gear.svg" /> 
+                            </button>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="num-cards">Number of Cards:</label>
+                                <select id="num-cards" class="form-control"  ></select>
+                                
+                                <script>
+                                    const numCardsSelect = document.getElementById('num-cards');
+                                    for (let i = 3; i <= 52; i++) {
+                                    const option = document.createElement('option');
+                                    option.value = i;
+                                    option.textContent = i;
+                                    numCardsSelect.appendChild(option);
+                                    }
+                                </script>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <label for="time-limit">Time Limit (seconds):</label>
+                                <input type="number" id="time-limit" class="form-control" min="1"  value="60">
+                            </div>
+                            <div id="custom-fields" class="col-12 row hidden">
+                                <div class="col-12 mt-3 ">
+                                    <label for="preptime">Prep Time (seconds):</label>
+                                    <input type="number" id="prep-time" class="form-control" min="1" value="20">
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <label for="preprecalltime">Prep Recall Time (seconds):</label>
+                                    <input type="number" id="prep-recall-time" class="form-control" min="1" value="20">
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <label for="recalltime">Recall Time (seconds):</label>
+                                    <input type="number" id="recall-time" class="form-control" min="1" value="300">
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <label for="groupsize">Group Size:</label>
+                                    <input type="number" id="group-size" class="form-control" min="1" value="3">
+                                </div>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <button id="start-button" class="btn btn-outline-success">Start</button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+   
+
+
+        <!-- Countdown Page -->
+        <div id="countdown-page" class="d-none">
+            <div class="row mt-5">
+                <div class="col-12 text-center countdown">
+                    <h3 id="countdown-label"></h3>
+                    <h2 id="countdown"></h2>
+                    <button id="skip-button" class="btn btn-outline-primary">Skip</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Viewing Page -->
+        <div id="view-cards-page" class="d-none spanlabel">
+            <div class="row mt-3 ">
+                <div class="col-12 text-right align-items-right">
+                    <span id="memo-timer"></span>
+                    <button id="end-memo-button" class="btn ml-3 btn btn-outline-success">Finished</button>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-12 text-center countdown">
+                    <h3>Memorize the cards</h3>
+                </div>
+            </div>
+            <div class="row mt-3 justify-content-center" id="cards-container"> 
+                <!-- Cards will be dynamically inserted here -->
+            </div>
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <span id="cards-count"></span>
+                </div>
+                <div class="col-12 text-center align-items-center ">
+                    <button id="prev-button" class="btn btn-secondary">Prev</button>
+                    <button id="next-button" class="btn btn-secondary">Next</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recall Page -->
+        <div id="recall-page" class="d-none ">
+            <!-- Timer, score and Finish Button -->
+            <div class="row mt-3 spanlabel">
+                <div class="col-4 text-left ">
+                    <span id="memo-score"></span>
+                </div>
+                <div class="col-4 text-center ">
+                    <span id="memo-time"></span>
+                </div>
+                <div class="col-4 text-right">
+                    <span id="recall-timer"></span>
+                    <button id="end-button" class="btn ml-2 btn-outline-success">Finished</button>
+                </div>
+            </div>
+
+            <!-- Header -->
+            <div class="row mt-1">
+                <div class="col-12 text-center countdown">
+                    <h3>Recall the cards</h3>
+                </div>
+            </div>
+            <div class="box">
+                <div id="recall-slots-container">
+                    <!-- Slots will be dynamically inserted here -->
+                </div>
+                <div id="recall-cards-container">
+                    <!-- Cards will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

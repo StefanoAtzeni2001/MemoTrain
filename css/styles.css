@@ -1,0 +1,150 @@
+.card {
+    width: 175px;
+    height: 250px;
+    border:0px;
+    margin: 0px;
+    margin-right: 1px;
+    padding: 0px;
+    cursor: pointer;
+    border-radius: 5px;
+    
+}
+.card img {
+    width: 100%;
+    height: 100%;
+}
+.d-none {
+    display: none;
+}
+
+#recall-slots-container,
+#recall-cards-container {
+    position: absolute;
+    width: auto;
+    height: auto;
+}
+
+.slot {
+    width: 100px;
+    height: 145px;
+    border: 1px solid #878787;
+    background-color: #e0e0e0;
+    position: absolute;
+    border-radius: 5px;
+}
+
+.slot img {
+    width: 100%;
+    height: 100%;
+}
+
+.slot:hover {
+    background-color: #e0e0e0;
+}
+
+.slot.selected {
+    background-color: #fbfb76;
+    border: 1px solid #444444;
+}
+
+.slot-number {
+    position: absolute;
+    top: -20px;
+    left: 10%;
+    font-size: 13px; 
+    color: #dadada;
+}
+
+.deck-card {
+    width: 75px;
+    height: 125px;
+    margin: 1px;
+    cursor: pointer;
+    position: absolute; 
+    transition: transform 0.1s ease;
+}
+.deck-card:hover{
+    transform: translateY(-30px);
+    width: 100px;
+    height: 130px;
+}
+
+.box {
+    position: relative;
+    width: 100%;
+    height: 540px;
+    background: #838292;
+    border-radius: 5px;
+  }
+
+  .red{
+    color:#ab0202;
+    font-size: 19px; 
+    top: -30px;
+  }
+  .black{
+    color:rgb(0, 0, 0);
+    font-size: 19px; 
+    top: -30px;
+  }
+
+
+
+.incorrect::after {
+    border: 1px solid #d20000;
+    border-radius: 5px;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ff000080; 
+    pointer-events: none; 
+}
+
+  .correct::after {
+    border: 1px solid #0ed200;
+    border-radius: 5px;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:#0ed20052; 
+    pointer-events: none; 
+  }
+
+  .disabled {
+    pointer-events: none;
+  }
+  
+  .spanlabel span{
+    font-size: 20px;
+    font-weight: bold;
+    color: #46456b;
+  }
+
+  .countdown h3, .countdown h2, .countdown h1{
+    font-weight: bold;
+    color: #46456b;
+  }
+
+  .highlight{
+    background-color:  #d7715b; 
+    border-radius: 10px;
+    color:#ffffff;
+  }
+
+ .hidden {
+    opacity: 0;
+    max-height: 0;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+}
+
+.visible {
+    opacity: 1;
+    max-height: 500px; 
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+}
