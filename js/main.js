@@ -48,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let recalledCards = [];
     let numCards = 0;
     let timeLimit = 0;
-    let prepTime = 20;
-    let prepRecallTime = 20;
+    let prepTime = 10;
+    let prepRecallTime = 10;
     let recallTime = 300;
     let groupSize = 3;
     let currentGroupIndex = 0;
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(countdownInterval);
         switchToPage(countdownPage, viewCardsPage);
         displayCardsGroup();
-        startTimer(timeLimit * 60, memoTimer, startRecallCountdown);
+        startTimer(timeLimit, memoTimer, startRecallCountdown);
     }
 
     //Start Recall Countdown 
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
 
-    // Start memorization timer with a given duration (in centiseconds)
+    // Start memorization timer with a given duration
     function startTimer(duration, element, callback) {
         let timer = duration;
         element.textContent = convertTime(timer);
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 clearInterval(countdownInterval);
                 callback();
             }
-        }, 10);
+        }, 1000);
     }
 
     // Convert time in seconds to mm:ss format (or ss:cc for centiseconds)
@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         // Display the score and time
         memoScore.textContent = `Score: ${score} / ${numCards}`;
-        memoTime.textContent = `Time: ${convertTime(time)} sec`;
+        memoTime.textContent = `Time: ${convertTime(time)}`;
         recallTimer.textContent = 'Completed';
         // Change the end button to a continue button
         endRecallButton.removeEventListener('click', endGame);
